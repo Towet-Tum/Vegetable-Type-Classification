@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <section class="contatiner">
+        <div class="form-predict" style="width: 50%;">
+       
+        <form action="#" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
+            {% csrf_token %}
+            <input type="file" name="upload" id="upload" required> 
+            <button type="submit" style="text-align: center; padding: 10px 15px;">Predict</button>
+        </form>
+    </div>
+    <div class="prediction-results">
+        
+       
+        <div class="img-item">
+            <img src="{{pred_img}}" alt="" width="300px">
+        </div>
+
+        <div class="pred_res">
+            <h1>The predicted Results</h1>
+            <p>{{result}}</p>
+        </div>
+         
+    </div>
+</section>
+   
+</body>
+</html>
