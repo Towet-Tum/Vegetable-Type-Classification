@@ -1,0 +1,27 @@
+stages:
+  data_ingestion:
+    cmd: python src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_ingestion/Vegetable Images
+
+
+  
+  training:
+    cmd: python src/cnnClassifier/pipeline/stage_02_training.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_02_training.py
+      - config/config.yaml
+      - artifacts/data_ingestion/Vegetable Images
+      
+    params:
+      - EPOCHS
+      - BATCH_SIZE
+      - AUGMENTATION
+    outs:
+      - artifacts/training/model.h5
+
+
+ 
